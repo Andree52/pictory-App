@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./styles/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>DarcMovie Management</title>
 </head>
 <body>
-    
+  <header>
+    <h1>Darc Movies</h1>
+  </header>
+  <section class="resource-container">
+    <!-- Resources will be dynamically generated here -->
+  </section>
+  <form id="resource-form1">
+    <h2>Add Movie</h2>
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+    <label for="director">Director:</label>
+    <input type="text" id="director" name="director" required>
+    <label for="release-year">Release Year:</label>
+    <input type="number" id="release-year" name="release-year" required>
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre">
+    <button type="submit">Submit</button>
+    <button type="button" id="reset-button">Reset</button>
+  </form>
+  <form id="resource-form2">
+    <h2>Search Movie</h2>
+    <label for="title">Title</label>
+    <input type="text" name="title">
+    <button type="submit"> Search movies</button>
+    <br></br>
+    <img class="movie-poster" src="movie-poster.jpg" alt="Movie Poster">
+    <button class="play-button">Play</button>
+    <br></br>
+    <button class="details-button">Details</button>
+    <button class="delete-button">Delete</button>
+  </form>
+  <script src="index.js"></script>
+  <script src="movies.js"></script>
 </body>
 </html>
