@@ -8,39 +8,51 @@
 </head>
 <body>
   <header>
-    <h1>Darc Movies</h1>
+    <h1>Villains Theatre </h1>
   </header>
   <section class="resource-container">
-  </section>
-  <form id="resource-form">
-    <h2>Add Movie</h2>
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required>
-    <label for="director">Director:</label>
-    <input type="text" id="director" name="director" required>
-    <label for="release-year">Release Year:</label>
-    <input type="number" id="release-year" name="release-year" required>
+  
+    <form id="resource-form">
+      <h2>Now Playing </h2>
+      <br></br>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEquWpSsXYS8iQNiB5GINQikh1YJpLHxgSqA&usqp=CAU" alt="Shawshank Redemption Poster" width="300" height="450">
+      <label for="title">The Shawshank Redemption</label>
+      <button class="play-button">Play trailer</button>
+      <br></br>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ61cYon6ODn7r5HP9w0knz0XpIpaa1IPIFwxJw5LBZbCsbkLForvhWnRQ8YynBYXK2Dy0&usqp=CAU" alt="inception Poster" width="300" height="450">
+      <label for="title">Inception</label>
+      <button class="play-button">Play trailer</button>
+      <br></br>
+      <img src="https://i.ebayimg.com/images/g/laUAAOSwnAxhyMyB/s-l1600.jpg" alt="The GodFather Poster" width="300" height="450">
+      <label for="title">The GodFather</label>
+      <button class="play-button">Play trailer</button>
+      <br></br>
+    </form>
+    <form id="show out-form">
+      <h2>View Movies</h2>
+      <label for="title">Title</label>
+      <input type="text" name="title">
+      <button type="submit"> Search movies</button>
+      <br></br>
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+      <label for="director">Director:</label>
+      <input type="text" id="director" name="director" required>
+      <label for="release-year">Release Year:</label>
+      <input type="number" id="release-year" name="release-year" required>
     <label for="genre">Genre:</label>
     <input type="text" id="genre" name="genre">
     <button type="submit">Submit</button>
     <button type="button" id="reset-button">Reset</button>
-  </form>
-  <form id="show out-form">
-    <h2>View Movies</h2>
-    <label for="title">Title</label>
-    <input type="text" name="title">
-    <button type="submit"> Search movies</button>
-    <br></br>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEquWpSsXYS8iQNiB5GINQikh1YJpLHxgSqA&usqp=CAU" alt="Shawshank Redemption Poster" width="300" height="450">
-    <label for="title">The Shawshank Redemption</label>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ61cYon6ODn7r5HP9w0knz0XpIpaa1IPIFwxJw5LBZbCsbkLForvhWnRQ8YynBYXK2Dy0&usqp=CAU" alt="inception Poster" width="300" height="450">
-    <label for="title">Inception</label>
-    <img src="https://i.ebayimg.com/images/g/laUAAOSwnAxhyMyB/s-l1600.jpg" alt="The GodFather Poster" width="300" height="450">
-    <label for="title">The GodFather</label>
-    <button class="play-button">Play</button>
     <br></br>
     <button class="details-button">Details</button>
     <button class="delete-button">Delete</button>
+  </form>
+  </section>
+  <footer>
+    <form id="leaving form">
+      <p>&copy; 2023 Villains Theatre</p>
+    </footer>
   </form>
   
   <script src="index.js"></script>

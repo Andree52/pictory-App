@@ -14,7 +14,8 @@ body {
   
   .resource-container {
     display: grid;
-    grid-template-columns: repeat(50% , minmax(250px, 1fr)); /* Two columns, responsive */
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: repeat(50% , minmax(250px, 1fr)); Two columns, responsive */
     gap: 1rem;
     margin: 1rem;
     padding: 1rem;
@@ -29,6 +30,7 @@ body {
   
   form h2 {
     font-size: 1.2rem;
+    color: rgb(255, 175, 70);
   }
   
   label, input {
@@ -52,9 +54,12 @@ body {
     background-color: #ccc;
   }
   button.play-button {
-    background-color: #03fcf4;
+    background-color: rgb(255, 175, 70);
   }
   label{
     color: rgb(255, 175, 70);
+  }
+  footer{
+  color: rgb(255, 175, 70);
   }
   
