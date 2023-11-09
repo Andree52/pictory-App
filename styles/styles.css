@@ -1,12 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: rgb(92, 247, 8);
+    background-color: #d49d06;
     margin: 0;
     padding: 0;
   }
   
   header {
-    background-color: #333;
+    background-color: rgb(14, 13, 13);
     color: #fff;
     text-align: center;
     padding: 1rem;
@@ -21,9 +21,9 @@ body {
   }
   
   form {
-    background-color: orange;
+    background-color: rgb(14, 14, 14);
     padding: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid #fffdfd;
     margin: 1rem;
   }
   
@@ -53,5 +53,8 @@ body {
   }
   button.play-button {
     background-color: #03fcf4;
+  }
+  label{
+    color: rgb(255, 175, 70);
   }
   

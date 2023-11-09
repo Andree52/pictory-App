@@ -1,47 +1,107 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const movieForm = document.getElementById('movie-form');
-    const movieContainer = document.getElementById('movie-container');
+  const movieForm = document.getElementById('resource-form');
+  const movieContainer = document.getElementById('movie-container');
 
-    movieForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+ 
+  const movies = [];
 
-        // Retrieve movie information
-        const title = document.getElementById('search-title').value;
+  movieForm.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-        // Create a new movie element
-        const movieElement = document.createElement('div');
-        movieElement.className = 'movie-card';
-        movieElement.innerHTML = `
-            <h3>${title}</h3>
-            <button class="check-button">Check Availability</button>
-        `;
+      
+      const title = document.getElementById('title').value;
+      const director = document.getElementById('director').value;
+      const releaseYear = document.getElementById('release-year').value;
+      const genre = document.getElementById('genre').value;
 
-        movieContainer.appendChild(movieElement);
+      
+      const movie = {
+          title,
+          director,
+          releaseYear,
+          genre,
+      };
+      movies.push(movie);
+      displayMovie(movie);
+      movieForm.reset();
+  });
+  function displayMovie(movie) {
+      const movieCard = document.createElement('div');
+      movieCard.classList.add('movie-card');
+      movieCard.innerHTML = `
+          <h3>${movie.title}</h3>
+          <p>Director: ${movie.director}</p>
+          <p>Release Year: ${movie.releaseYear}</p>
+          <p>Genre: ${movie.genre}</p>
+      `;
 
-        // Clear the search input
-        document.getElementById('search-title').value = '';
-    });
+      movieContainer.appendChild(movieCard);
+  }
+  const searchForm = document.getElementById('resource-form');
+  searchForm.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    movieContainer.addEventListener('click', function (e) {
-        if (e.target.classList.contains('check-button')) {
-            // Retrieve movie details for checking availability
-            const movieCard = e.target.parentElement;
-            const movieTitle = movieCard.querySelector('h3').textContent;
+      const searchTitle = document.getElementById('search-title').value;
+      movieContainer.innerHTML = '';
 
-            // Perform a check in your movie database here
-            // Replace this with your database logic
+      const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchTitle.toLowerCase()));
 
-            // For example, you can check if the movie is available and then redirect to its details page
-            const isAvailable = true; // Replace with your availability check logic
-            if (isAvailable) {
-                // Redirect to the movie details page (e.g., details.html)
-                window.location.href = `details.html?title=${movieTitle}`;
-            } else {
-                alert('This movie is not available.');
-            }
-        }
-    });
+      filteredMovies.forEach(movie => displayMovie(movie));
+  });
 });
+
+
+      
+
+
+
+
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const resourceForm = document.getElementById('resource-form');
+//     const resourceContainer = document.querySelector('.resource-container');
+  
+//     resourceForm.addEventListener('submit', function (e) {
+//       e.preventDefault();
+  
+//       const title = document.getElementById('title').value;
+//       const director = document.getElementById('director').value;
+//       const releaseYear = document.getElementById('release-year').value;
+//       const genre = document.getElementById('genre').value;
+  
+      
+//       if (!title || !director || !releaseYear) {
+//         alert('Please fill in the required fields.');
+//         return;
+//       }
+//       const movieElement = document.createElement('div');
+//       movieElement.classList.add('movie');
+//       movieElement.innerHTML = `
+//         <h3>${title}</h3>
+//         <p>Director: ${director}</p>
+//         <p>Release Year: ${releaseYear}</p>
+//         <p>Genre: ${genre || 'N/A'}</p>
+//         <button class="remove-button">Remove</button>
+//       `;
+  
+//       resourceContainer.insertBefore(movieElement, resourceContainer.firstChild);
+  
+//       // Clear the form
+//       resourceForm.reset();
+//     });
+  
+//     resourceContainer.addEventListener('click', function (e) {
+//       if (e.target.classList.contains('remove-button')) {
+//         const movieElement = e.target.parentElement;
+//         movieElement.remove();
+//       }
+//     });
+  
+//     document.getElementById('reset-button').addEventListener('click', function () {
+//       resourceForm.reset();
+//     });
+//   });
 
 
 
