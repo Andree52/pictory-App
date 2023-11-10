@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #d49d06;
+    background-color: rgb(255, 175, 70);
     margin: 0;
     padding: 0;
   }
@@ -36,6 +36,9 @@ body {
   label, input {
     display: block;
     margin-bottom: 0.5rem;
+  }
+  p{
+    color: #fff;
   }
   
   button {

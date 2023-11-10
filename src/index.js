@@ -1,54 +1,118 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const movieForm = document.getElementById('resource-form');
-  const movieContainer = document.getElementById('movie-container');
+const faker = require('faker');
+
+const fakeName = faker.name.findName();
+const fakeDirector = faker.name.Director();
+const fakeTime = faker.time.showTimes();
+
+console.log('Fake Name:', fakeName);
+console.log('Fake Director:', fakeDirector);
+console.log('Fake showTime:', fakeTime);
+
+let movieArray = [
+  {
+      title: faker.name.title(),
+      year: faker.date.past().getFullYear(),
+      genre: faker.lorem.word(),
+      showtimes: faker.date.soon(3)
+  },
+];
+console.log(movieArray)
+function searchMovieTimes(date) {
+  let result = [];
+  movieArray.forEach(movie => {
+      movie.showtimes.forEach(showtime => {
+          let showtimeDate = new Date(showtime);
+          if (showtimeDate.getDate() === date.getDate() &&
+              showtimeDate.getMonth() === date.getMonth() &&
+              showtimeDate.getFullYear() === date.getFullYear()) {
+              result.push({ title: movie.title, year: movie.year, genre: movie.genre, showtime: showtimeDate });
+          }
+      });
+  });
+  return result;
+}
+let today = new Date();
+let movieTimes = searchMovieTimes(today);
+console.log(movieTimes);
+
+
+function displayMovieListings(movies){
+  const movieListings = document.getElementById("listings")
+  movieListings.innerHTML = ""
+  movies.forEach(movie => {
+    const listItem = document.createElement("li")
+    listItem.textContent = `${movie.title},${movie.year},${movie.showTimes.join(", ")}`
+    movieListings.appendChild(listItem)
+  })
+}
+document.getElementById("showout-form").addEventListener("submit", function(event){
+  event.preventDefault()
+  displayMovieListings(movieArray)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   const movieForm = document.getElementById('resource-form');
+//   const movieContainer = document.getElementById('movie-container');
 
  
-  const movies = [];
+//   const movies = [];
 
-  movieForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      
-      const title = document.getElementById('title').value;
-      const director = document.getElementById('director').value;
-      const releaseYear = document.getElementById('release-year').value;
-      const genre = document.getElementById('genre').value;
+//   movieForm.addEventListener('submit', function (e) {
+//       e.preventDefault();
 
       
-      const movie = {
-          title,
-          director,
-          releaseYear,
-          genre,
-      };
-      movies.push(movie);
-      displayMovie(movie);
-      movieForm.reset();
-  });
-  function displayMovie(movie) {
-      const movieCard = document.createElement('div');
-      movieCard.classList.add('movie-card');
-      movieCard.innerHTML = `
-          <h3>${movie.title}</h3>
-          <p>Director: ${movie.director}</p>
-          <p>Release Year: ${movie.releaseYear}</p>
-          <p>Genre: ${movie.genre}</p>
-      `;
+//       const title = document.getElementById('title').value;
+//       const director = document.getElementById('director').value;
+//       const releaseYear = document.getElementById('release-year').value;
+//       const genre = document.getElementById('genre').value;
 
-      movieContainer.appendChild(movieCard);
-  }
-  const searchForm = document.getElementById('resource-form');
-  searchForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+      
+//       const movie = {
+//           title,
+//           director,
+//           releaseYear,
+//           genre,
+//       };
+//       movies.push(movie);
+//       displayMovie(movie);
+//       movieForm.reset();
+//   });
+//   function displayMovie(movie) {
+//       const movieCard = document.createElement('div');
+//       movieCard.classList.add('movie-card');
+//       movieCard.innerHTML = `
+//           <h3>${movie.title}</h3>
+//           <p>Director: ${movie.director}</p>
+//           <p>Release Year: ${movie.releaseYear}</p>
+//           <p>Genre: ${movie.genre}</p>
+//       `;
 
-      const searchTitle = document.getElementById('search-title').value;
-      movieContainer.innerHTML = '';
+//       movieContainer.appendChild(movieCard);
+//   }
+//   const searchForm = document.getElementById('resource-form');
+//   searchForm.addEventListener('submit', function (e) {
+//       e.preventDefault();
 
-      const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchTitle.toLowerCase()));
+//       const searchTitle = document.getElementById('search-title').value;
+//       movieContainer.innerHTML = '';
 
-      filteredMovies.forEach(movie => displayMovie(movie));
-  });
-});
+//       const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchTitle.toLowerCase()));
+
+//       filteredMovies.forEach(movie => displayMovie(movie));
+//   });
+// });
 
 
       
